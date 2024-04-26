@@ -9,9 +9,8 @@ def scrape_website(url):
     soup = BeautifulSoup(req.content, 'html.parser')
     raw = soup.pre.text
     pattern = re.compile(
-        r'\d{4}\.\d{2}\.\d{2}\s+\d{2}:\d{2}:\d{2}\s+[\d.]+\s+[\d.]+\s+[\d.]+\s+-.-\s+['
-        r'\d.]+\s+['
-        r'\d.]+\s+\S+(?:\s\S+)*?\s'
+        r'\d{4}\.\d{2}\.\d{2}\s+\d{2}:\d{2}:\d{2}\s+[\d.]+\s+[\d.]+\s+[\d.]+\s+(?:-.-|[\d.]+)\s+['
+        r'\d.]+\s+(?:-.-|[\d.]+)\s+\S+(?:\s\S+)*?\s'
     )
     matches = pattern.findall(raw)
     scrape_matches = []
